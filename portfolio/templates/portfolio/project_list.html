@@ -1,0 +1,14 @@
+<h1>프로젝트 리스트</h1>
+<ul>
+  {% for project in projects %}
+    <li>
+      <a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a>
+      <form method="post" action="{% url 'add_interest' project.pk %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">관심 추가</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'interest_list' %}">내 관심 프로젝트 보기</a>

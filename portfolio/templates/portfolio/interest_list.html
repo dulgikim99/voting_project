@@ -1,0 +1,15 @@
+﻿<h1>내 관심 프로젝트</h1>
+
+{% if projects %}
+<ul>
+    {% for project in projects %}
+    <li>
+        <a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>아직 추가된 관심 프로젝트가 없습니다.</p>
+{% endif %}
+
+<a href="{% url 'project_list' %}">← 전체 목록으로 돌아가기</a>

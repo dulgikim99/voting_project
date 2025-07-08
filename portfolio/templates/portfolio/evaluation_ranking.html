@@ -1,0 +1,23 @@
+﻿<h1>사용자 평가 순위</h1>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>순위th>
+        <th>사용자</th>
+        <th>프로젝트</th>
+        <th>점수</th>
+        <th>평가 시각</th>
+    </tr>
+    {% for eval in evaluations %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ eval.user }}</td>
+        <td><a href="{% url 'project_detail' eval.project.pk %}">{{ eval.project.title }}</a></td>
+        <td>{{ eval.score }}</td>
+        <td>{{ eval.evaluated_at|date:"Y-m-d H:i" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'project_list' %}">← 프로젝트 목록으로 돌아가기</a>
+>

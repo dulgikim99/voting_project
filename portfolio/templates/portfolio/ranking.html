@@ -1,0 +1,25 @@
+﻿<h1>프로젝트 평가 순위</h1>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>순위</th>
+        <th>프로젝트명</th>
+        <th>평균 점수</th>
+    </tr>
+    {% for project in projects %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td><a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a></td>
+        <td>
+            {% if project.avg_score %}
+            {{ project.avg_score|floatformat:2 }} / 5
+            {% else %}
+            평가 없음
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'project_list' %}">← 프로젝트 리스트로</a>

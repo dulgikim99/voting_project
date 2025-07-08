@@ -1,0 +1,4 @@
+.vs/
+venv/
+db.sqlite3
+static/
